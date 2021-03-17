@@ -1,0 +1,6 @@
+sudo apt install python3-virtualenv
+cd /home/mapdemon/flask_map_app
+virtualenv env
+sudo apt install mysql-server
+sudo mysql_secure_installation
+pip install pymysql

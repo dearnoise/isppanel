@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <link rel="stylesheet" href="./static/style.css">
+    <title>Map</title>
+  </head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="./static/script.js"></script>
+<script src="https://api-maps.yandex.ru/2.0-stable/?apikey= &load=package.full&lang=ru-RU" type="text/javascript"></script>
+
+
+<body>
+  <div id="myMap" style="width: 700px; height: 700px;"></div>
+
+<!--TODO: Для запросов в БД нужно будет установить Ajax.
+          Половина данных БД запрашивается при загрузке/обновлении страницы.
+TODO: Этот кусок будет давать детализацию данных пользователя в левой панели, по требованию пользователя.
+<input type="text" id="inputBox" style="width:250px" vertical-align='top'>
+Эта кнопка заставляет функцию взаимодействовать с Python по нажатию мышки.
+<button vertical-align='top' onclick="send_js(document.getElementById('inputBox').value)" align='left'>Submit</button>
+Тут выводится результат операции.
+<p id='ans'> </p> -->
+
+
+<!--Карта начинает инициализироваться когда готов её контейнер HTML (myMap)
+    TODO: Тут будет основной JS-функционал карты и её настройки
+          Мануал здесь: https://tokmakov.msk.ru/blog/item/16  -->
+  <script>
+    ymaps.ready(init);
+    function init() {
+      var myMap = new ymaps.Map ('myMap', {
+          center: [56.864, 35.911],
+          zoom: 13
+      });
+      myMap.controls
+          .add('mapTools')       // Стандартные кнопки
+          .add('zoomControl');   // Изменение масштаба
+      var myPlacemark = new ymaps.Placemark([56.864, 35.911], { 
+          iconContent: 'Тверь', 
+          balloonContent: 'Ведутся технические работы.' 
+      }, {
+          preset: 'twirl#blueStretchyIcon'
+    });
+    }
+  </script>
+</body>
+</html>
